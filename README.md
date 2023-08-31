@@ -1,4 +1,4 @@
-# Mi 02
+# PREparcial
 
 ### ingreso por teclado y leo con el teclado a travez de la consola
 
