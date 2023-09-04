@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.preparcial.R
 
 class CompanyDetailsFragment : Fragment() {
@@ -18,24 +21,37 @@ class CompanyDetailsFragment : Fragment() {
 
     private lateinit var viewModel: CompanyDetailsViewModel
     private val args: CompanyDetailsFragmentArgs by navArgs()
+    private lateinit var v: View
+
+    lateinit var txtName: TextView
+    lateinit var txtEmployees: TextView
+    lateinit var txtDescription: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_company_details, container, false)
+        v = inflater.inflate(R.layout.fragment_company_details, container, false)
+
+        txtName = v.findViewById(R.id.textCompanyName)
+        txtEmployees = v.findViewById(R.id.textEmployedQtty)
+        txtDescription = v.findViewById(R.id.textCompanyDescription)
+        return v
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.d("CompanyDetailsFragment", "Company: ${args.company.name}")
-    }
+        txtName.text = args.company.name
+        txtEmployees.text = args.company.employeeQty.toString()
+        txtDescription.text = args.company.description
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CompanyDetailsViewModel::class.java)
-        // TODO: Use the ViewModel
+        val imgLogo : ImageView = view.findViewById(R.id.imgLogo)
+        Glide
+            .with(imgLogo)
+            .load(args.company.logo)
+            .centerCrop()
+            .into(imgLogo)
     }
 
 }

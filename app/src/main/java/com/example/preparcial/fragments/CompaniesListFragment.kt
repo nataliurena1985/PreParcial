@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.preparcial.R
@@ -66,7 +67,11 @@ class CompaniesListFragment : Fragment() {
     private fun setupRecyclerView() {
         // Creo el adapter de la lista de companies y le paso la lista de companies junto con el callback
         val companiesAdapter = CompaniesAdapter(companiesList) { company ->
+
             Log.d("CompaniesListFragment", "Company: ${company.name}")
+
+            val action = CompaniesListFragmentDirections.actionCompaniesListFragmentToCompanyDetailsFragment(company)
+            findNavController().navigate(action)
         }
 
         val adapter2 = CompaniesAdapter(companiesList, ::onCompanyClicked)
