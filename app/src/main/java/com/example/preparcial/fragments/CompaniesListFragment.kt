@@ -38,6 +38,9 @@ class CompaniesListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        companiesList.clear()
+
         companiesList.add(Company("Apple", 100000, "https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png?202106030101", ""))
         companiesList.add(Company("Facebook", 2000, "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png", ""))
         companiesList.add(Company("Google", 2000, "https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png", ""))
