@@ -9,5 +9,24 @@
         android:id="@+id/companiesListFragment"
         android:name="com.example.preparcial.fragments.CompaniesListFragment"
         android:label="fragment_companies_list"
-        tools:layout="@layout/fragment_companies_list" />
+        tools:layout="@layout/fragment_companies_list" >
+        <action
+            android:id="@+id/action_companiesListFragment_to_companyDetailsFragment"
+            app:destination="@id/companyDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyDetailsFragment"
+        android:name="com.example.preparcial.fragments.CompanyDetailsFragment"
+        android:label="fragment_company_details"
+        tools:layout="@layout/fragment_company_details" >
+        <argument
+            android:name="company"
+            app:argType="com.example.preparcial.models.Company" />
+    </fragment>
+
+
+
+
+
+
 </navigation>
